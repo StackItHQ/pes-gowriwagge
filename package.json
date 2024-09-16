@@ -1,0 +1,20 @@
+{
+    "name": "google-sheets-sync",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+      "dotenv": "^16.4.5",
+      "googleapis": "^144.0.0",
+      "moment": "^2.30.1",
+      "mysql": "^2.18.1",
+      "mysql2": "^3.11.2",
+      "node-cron": "^3.0.3"
+    }
+  }
