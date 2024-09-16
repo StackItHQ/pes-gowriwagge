@@ -9,8 +9,8 @@ const RANGE = 'Sheet1!A1';
 // MySQL connection configuration
 const dbConfig = {
   host: 'localhost', // Database host
-  user: 'Gowriwagge', // Database user
-  password: 'Gowri08', // Database password
+  user: 'root', // Database user
+  password: 'Vision@2020', // Database password
   database: 'SheettoDb' // Database name
 };
 
