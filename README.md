@@ -5,7 +5,6 @@
 ## Features
 - **Real-time synchronization**: Automatically syncs data between Google Sheets and a MySQL database.
 - **CRUD support**: Handles creation, reading, updating, and deletion of records in both Google Sheets and the database.
-- **Conflict resolution (Optional)**: Designed to handle conflicts when changes are made simultaneously on both platforms.
 - **Scalable**: Built with scalability in mind, ensuring smooth performance even with large datasets.
 
 ## Project Structure
