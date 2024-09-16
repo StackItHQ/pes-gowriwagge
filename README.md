@@ -1,6 +1,6 @@
 # Realtimesync
 
-**Realtimesync** is a Node.js application that provides real-time synchronization between a Google Sheet and a MySQL database. It detects changes in both the Google Sheet and the MySQL database, ensuring that any modification in one is reflected in the other through CRUD operations (Create, Read, Update, Delete). The application uses Google Sheets API for integration and OAuth2 for authentication.
+**Realtimesync** is a Node.js application that provides real-time synchronization between a Google Sheet and a MySQL database. It detects changes in both the Google Sheet and the MySQL database, ensuring that any modification in one is reflected in the other through CRUD operations. The application uses Google Sheets API for integration and OAuth2 for authentication.
 
 ## Features
 - **Real-time synchronization**: Automatically syncs data between Google Sheets and a MySQL database.
