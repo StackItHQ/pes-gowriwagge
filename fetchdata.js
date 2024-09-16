@@ -4,8 +4,8 @@ const moment = require('moment');
 // Create a MySQL connection
 const connection = mysql.createConnection({
     host: 'localhost',
-    user: 'Gowriwagge',
-    password: 'Gowri08',
+    user: 'root',
+    password: 'Vision@2020',
     database: 'SheettoDb'
 });
 
