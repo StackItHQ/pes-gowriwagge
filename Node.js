@@ -5,8 +5,8 @@ const credentials = require('./credentials.json'); // Path to your credentials.j
 // MySQL connection setup
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: 'Gowriwagge',
-  password: 'Gowri08',
+  user: 'root',
+  password: 'Vision@2020',
   database: 'SheettoDb',
 });
 
@@ -25,7 +25,7 @@ async function authorize() {
 
   // Replace 'YOUR_REFRESH_TOKEN' with the actual refresh token you received from the OAuth flow
   oAuth2Client.setCredentials({
-    refresh_token: '1//0gs_mKI6F14qKCgYIARAAGBASNwF-L9IrflAjepw8j5TULSlgSOK-i4gV3yX3x0_7_lk9XQN7agm8TQHc0HgJA7mohQPB8OJEnEo', // Replace with your refresh token
+    refresh_token: '1//0g8kfQIHEnT2OCgYIARAAGBASNwF-L9Irr2mcZMXkPdJZYPy-eDcgLOYte57Yh5NHiRY3WMpdAw5Vwbt1VNjPviHud1gQe8P_TDY', // Replace with your refresh token
   });
 
   return oAuth2Client;
@@ -36,7 +36,7 @@ async function getSheetData(auth) {
   const sheets = google.sheets({ version: 'v4', auth });
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId: '1m6KWFf30sghe25ILBIf_KwcHTxI8sOf0aVo_jwR6fEQ', // Replace with your spreadsheet ID
-    range: 'Sheet1!A1:C10', // Adjust the range to your needs
+    range: 'Sheet1!A1:F', // Adjust the range to your needs
   });
   return response.data.values;
 }
