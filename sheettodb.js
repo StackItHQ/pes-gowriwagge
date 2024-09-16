@@ -1,21 +1,16 @@
-require('dotenv').config();  // Load environment variables from .env file
 const cron = require('node-cron');
 const { google } = require('googleapis');
 const mysql = require('mysql2');
 const OAuth2 = google.auth.OAuth2;
-const moment = require('moment'); // Import moment for date formatting
+const moment = require('moment'); // Import moment
 
-// Initialize OAuth2 client with credentials from .env
-const oauth2Client = new OAuth2(
-    process.env.GOOGLE_CLIENT_ID,
-    process.env.GOOGLE_CLIENT_SECRET,
-    process.env.GOOGLE_REDIRECT_URI
-);
+// Initialize OAuth2 client with your credentials
+// confidental
 
-// Set the OAuth2 credentials from .env
+// Set the OAuth2 credentials
 oauth2Client.setCredentials({
-    access_token: process.env.GOOGLE_ACCESS_TOKEN,
-    refresh_token: process.env.GOOGLE_REFRESH_TOKEN,
+    access_token: 'ya29.a0AcM612zYzynkXXn_gJ_ypQajew1Kdp0mdAWkrC0zsmn23kr_5hSLjXctNywFGAds0IOqbauL0_U7ifUWgvaGcdL0QAd2_3wTpPHqruYPmgEuJr5XgjSM8Ru9HmD8fvQA0_r6rL2Ev_1hZWpLOhNqPyA_E0SoQCriBLm1N-1yaCgYKAbcSARMSFQHGX2MiKgJGhYZkrIVd_sDtgt8YnA0175',
+    refresh_token: '1//0g8kfQIHEnT2OCgYIARAAGBASNwF-L9Irr2mcZMXkPdJZYPy-eDcgLOYte57Yh5NHiRY3WMpdAw5Vwbt1VNjPviHud1gQe8P_TDY',
     scope: 'https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive',
     token_type: 'Bearer',
     expiry_date: 1726402639680
@@ -23,21 +18,21 @@ oauth2Client.setCredentials({
 
 const sheets = google.sheets({ version: 'v4', auth: oauth2Client });
 
-// MySQL connection setup using environment variables
+// MySQL connection setup
 const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME
+  host: 'localhost',
+  user: 'root',
+  password: 'Vision@2020',
+  database: 'SheettoDb'
 });
 
-// Function to check for changes between Google Sheets and MySQL
+// Function to check for changes
 function checkForChanges() {
   console.log('Checking for changes...');
 
   // Fetch data from Google Sheets
   sheets.spreadsheets.values.get({
-    spreadsheetId: process.env.GOOGLE_SHEET_ID,
+    spreadsheetId: '1m6KWFf30sghe25ILBIf_KwcHTxI8sOf0aVo_jwR6fEQ',
     range: 'Sheet1!A1:F',
   }, (err, res) => {
     if (err) return console.log('Error accessing sheets:', err);
@@ -55,7 +50,7 @@ function checkForChanges() {
   });
 }
 
-// Function to sync Google Sheets data with MySQL database
+// Function to sync data
 function syncData(sheetRows, dbResults) {
     console.log('Syncing data...');
 
@@ -86,7 +81,7 @@ function syncData(sheetRows, dbResults) {
                     [sheetRow.Name, sheetRow.Department, sheetRow.Joining_Date, sheetRow.Salary, sheetRow.Performance_Score, sheetRow.ID],
                     (err) => {
                         if (err) throw err;
-                        console.log(Updated ID ${sheetRow.ID});
+                        console.log(`Updated ID ${sheetRow.ID}`);
                     }
                 );
             }
@@ -97,7 +92,7 @@ function syncData(sheetRows, dbResults) {
                 [sheetRow.ID, sheetRow.Name, sheetRow.Department, sheetRow.Joining_Date, sheetRow.Salary, sheetRow.Performance_Score],
                 (err) => {
                     if (err) throw err;
-                    console.log(Inserted ID ${sheetRow.ID});
+                    console.log(`Inserted ID ${sheetRow.ID}`);
                 }
             );
         }
@@ -109,12 +104,13 @@ function syncData(sheetRows, dbResults) {
 
     // Delete rows from the database that are no longer in the sheet
     deletedRows.forEach(row => {
+      console.log(row.ID)
         connection.query(
             'DELETE FROM sync_data WHERE ID = ?',
             [row.ID],
             (err) => {
                 if (err) throw err;
-                console.log(Deleted ID ${row.ID} from database);
+                console.log(`Deleted ID ${row.ID} from database`);
             }
         );
     });
@@ -136,7 +132,7 @@ function syncData(sheetRows, dbResults) {
         ]);
 
         sheets.spreadsheets.values.update({
-            spreadsheetId: process.env.GOOGLE_SHEET_ID,
+            spreadsheetId: '1m6KWFf30sghe25ILBIf_KwcHTxI8sOf0aVo_jwR6fEQ',
             range: 'Sheet1!A2',
             valueInputOption: 'RAW',
             resource: {
@@ -156,4 +152,4 @@ function syncData(sheetRows, dbResults) {
 
 setInterval(() => {
   checkForChanges();
-}, 1000);
+}, 5000);
