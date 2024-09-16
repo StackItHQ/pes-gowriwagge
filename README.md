@@ -29,6 +29,11 @@ The project contains several files that handle different tasks related to syncin
 
 This project uses key MySQL table: `sync_data` for employee details (ID, Name, Department, Joining_Date, Salary, Performance_Score). This table enable real-time synchronization between Google Sheets and the database.
 
+## Demo
+
+[![video]
+https://drive.usercontent.google.com/u/0/uc?id=1B2DpIKEZgKhfFdjUrX_7rRrRI2YX4dOx&export=download
+
 ## Conclusion
 
 **Realtimesync** simplifies real-time data synchronization between Google Sheets and MySQL databases, making it an invaluable tool for automating workflows and ensuring data consistency. Its ability to handle full CRUD operations, secure integration, and scalability makes it highly applicable to real-world scenarios like managing business data, streamlining processes, and reducing manual effort. This project offers a practical, efficient solution for maintaining up-to-date records in both environments, benefiting organizations across various industries.
