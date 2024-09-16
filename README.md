@@ -27,7 +27,7 @@ The project contains several files that handle different tasks related to syncin
 
 # MySQL Tables Overview
 
-This project uses key MySQL tables: `SheetData` for syncing Google Sheets data (id, name, email, score) and `sync_data` for employee details (ID, Name, Department, Joining_Date, Salary, Performance_Score). These tables enable real-time synchronization between Google Sheets and the database.
+This project uses key MySQL table: `sync_data` for employee details (ID, Name, Department, Joining_Date, Salary, Performance_Score). This table enable real-time synchronization between Google Sheets and the database.
 
 ## Conclusion
 
